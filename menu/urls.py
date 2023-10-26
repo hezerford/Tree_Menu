@@ -1,5 +1,6 @@
 from django.urls import path
+from menu.views import home
 
 urlpatterns = [
-    path('')
+    path('', home, name='home'),
 ]
