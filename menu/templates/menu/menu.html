@@ -1,8 +1,10 @@
-<h1>Menu Name: {{ menu_name }}</h1>
+<h1>Menu: {{ menu_name }}</h1>
 <ul>
     {% for item in menu_items %}
-        <li>
-            <a href="{% if item.named_url %}{% url item.named_url %}{% else %}{{ item.url }}{% endif %}">{{ item.title }}</a>
+        <li {% if item == active_item %} style="text-decoration: none; color: black; pointer-events: none;"{% endif %}>
+            <a href="{% if item.named_url %}{% url item.named_url %}{% else %}{{ item.url }}{% endif %}">
+                {{ item.title }}
+            </a>
         </li>
     {% endfor %}
 </ul>

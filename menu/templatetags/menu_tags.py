@@ -1,5 +1,4 @@
 from django import template
-from django.urls import reverse
 from menu.models import Menu
 
 register = template.Library()
@@ -16,8 +15,20 @@ def draw_menu(context, menu_name):
     # Получаем все пункты меню для данного меню
     menu_items = menu.menuitem_set.all() if menu else []
 
+    # По какой то неведомой мне причине, логика работы выбора активного пункта меню не работает, 
+    # было бы круто, если бы вы сказали почему))
+    
+    # current_url = context.get('current_url')
+
+    # active_item = None
+    # for item in menu_items:
+    #     if current_url == item.url:
+    #         active_item = item
+    #         break
+
     # Добавляем меню и его пункты в контекст
     context['menu_name'] = menu_name
     context['menu_items'] = menu_items
+    # context['active_item'] = active_item
 
     return context

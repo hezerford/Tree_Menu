@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
 def home(request):
-    context = {}
+    current_url = request.path
+    context = {'current_url': current_url}  
     return render(request, 'menu/home.html', context)
